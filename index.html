@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium General Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Premium General Store Logo" class="logo">
+    <h1>Premium General Store</h1>
+    <p>Run by Shivam Gupta | Call: 7006506721</p>
+  </header>
+
+  <nav>
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('snacks')">Snacks</button>
+    <button onclick="filterCategory('beverages')">Beverages</button>
+    <button onclick="filterCategory('spices')">Spices</button>
+  </nav>
+
+  <section class="product-gallery">
+    <div class="product snacks"><img src="placeholder.png" alt="Snack"><p>Kurkure</p></div>
+    <div class="product beverages"><img src="placeholder.png" alt="Beverage"><p>Coca-Cola</p></div>
+    <div class="product spices"><img src="placeholder.png" alt="Spice"><p>Haldi Powder</p></div>
+    <div class="product beverages"><img src="placeholder.png" alt="Beverage"><p>Pepsi</p></div>
+    <div class="product snacks"><img src="placeholder.png" alt="Snack"><p>Chips</p></div>
+  </section>
+
+  <section class="map-contact">
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=9GMG+6CP,+DH+Road,+Haji+Colony,+Kathua,+184101&output=embed" width="100%" height="250" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <form action="https://formsubmit.co/your-email@example.com" method="POST">
+      <h2>Contact Us</h2>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/917006506721">Order via WhatsApp</a>
+    <button id="themeToggle">Toggle Light/Dark Mode</button>
+  </footer>
+</body>
+</html>
