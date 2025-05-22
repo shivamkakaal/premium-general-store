@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Premium General Store</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; }
+    .hidden { display: none; }
+    input, select, button { margin: 0.5em 0; padding: 0.5em; width: 100%; }
+    .product-list { margin-top: 2em; }
+    .product { border-bottom: 1px solid #ccc; padding: 1em 0; }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <div id="login-section">
+    <p>Enter Admin Password:</p>
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <div id="admin-section" class="hidden">
+    <h2>Add Product</h2>
+    <input type="text" id="name" placeholder="Product Name" />
+    <input type="text" id="price" placeholder="Price (e.g. ₹20)" />
+    <input type="text" id="category" placeholder="Category (e.g. snacks)" />
+    <input type="text" id="image" placeholder="Image URL (optional)" />
+    <button onclick="addProduct()">Add Product</button>
+
+    <h2>Current Products</h2>
+    <div id="product-list" class="product-list"></div>
+  </div>
+
+  <script>
+    const correctPassword = "kirana123";
+
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      if (pwd === correctPassword) {
+        document.getElementById("login-section").classList.add("hidden");
+        document.getElementById("admin-section").classList.remove("hidden");
+        loadProducts();
+      } else {
+        alert("Wrong password!");
+      }
+    }
+
+    async function loadProducts() {
+      const res = await fetch("products.json");
+      const products = await res.json();
+      const list = document.getElementById("product-list");
+      list.innerHTML = "";
+      products.forEach((p, i) => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `<b>${p.name}</b> - ${p.price} (${p.category})`;
+        list.appendChild(div);
+      });
+    }
+
+    async function addProduct() {
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const category = document.getElementById("category").value;
+      const image = document.getElementById("image").value || "placeholder.png";
+
+      const res = await fetch("products.json");
+      const products = await res.json();
+      products.push({ name, price, category, image });
+
+      const file = new Blob([JSON.stringify(products, null, 2)], { type: 'application/json' });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(file);
+      a.download = "products.json";
+      a.click();
+
+      alert("Product added! Download the new products.json and upload it to GitHub.");
+      loadProducts();
+    }
+  </script>
+</body>
+</html>

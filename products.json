@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Kurkure",
+    "price": "\u20b910",
+    "category": "snacks",
+    "image": "placeholder.png"
+  },
+  {
+    "name": "Coca-Cola",
+    "price": "\u20b940",
+    "category": "beverages",
+    "image": "placeholder.png"
+  },
+  {
+    "name": "Haldi Powder",
+    "price": "\u20b930",
+    "category": "spices",
+    "image": "placeholder.png"
+  }
+]
